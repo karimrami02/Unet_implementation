@@ -1,0 +1,36 @@
+# Deep Learning Framework
+torch>=2.0.0
+torchvision>=0.15.0
+
+# Image Processing
+scikit-image>=0.21.0
+Pillow>=10.0.0
+
+# Scientific Computing
+numpy>=1.24.0
+scipy>=1.11.0
+
+# Data Splitting & ML Utilities
+scikit-learn>=1.3.0
+
+# Configuration
+PyYAML>=6.0
+
+# Progress Bars
+tqdm>=4.65.0
+
+# Visualization
+matplotlib>=3.7.0
+
+# Optional: For better performance
+# opencv-python>=4.8.0  # Alternative to scikit-image for some operations
+
+# Optional: For experiment tracking
+# tensorboard>=2.13.0
+# wandb>=0.15.0
+
+# Note: For Google Colab, most of these are pre-installed
+# You only need to install:
+# - scikit-image
+# - PyYAML
+# - scipy (usually pre-installed)
