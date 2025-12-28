@@ -2,20 +2,23 @@
 
 PyTorch implementation of [U-Net](https://arxiv.org/abs/1505.04597) for biomedical image segmentation, optimized for the ISBI 2012 Cell Segmentation Challenge.
 
----
 
-## 🚀 Quick Start (Google Colab)
 
-### 1. Setup
-```python
-from google.colab import drive
-drive.mount('/content/drive')
+## Quick Start 
+
+```bach
+git clone https://github.com/karimrami02/Unet_implementation.git
+cd Unet_implementation
+
+# Create virtual environment
+python3 -m venv venv
+source venv/bin/activate
 
 # Install dependencies
-!pip install -q scikit-image scipy PyYAML scikit-learn
+pip install -r requirements.txt
 ```
 
-### 2. Download ISBI 2012 Dataset
+### . Download ISBI 2012 Dataset
 - Get `train-volume.tif` and `train-labels.tif` from [ISBI Challenge](http://brainiac2.mit.edu/isbi_challenge/)
 - Upload to `data` folder
 
@@ -74,7 +77,7 @@ augmentation:
 
 ---
 
-## 📊 Expected Results
+## Expected Results
 
 | Metric | Expected |
 |--------|----------|
@@ -84,7 +87,7 @@ augmentation:
 
 ---
 
-## 🎯 Features
+##  Features
 
  Complete U-Net with skip connections  
  Weighted cross-entropy + Dice loss  
@@ -96,7 +99,7 @@ augmentation:
 
 
 
-## 🛠️ Local Installation
+##  Local Installation
 
 ```bash
 pip install -r requirements.txt
@@ -111,7 +114,7 @@ python evaluate.py
 
 ---
 
-## 📈 Training Output
+##  Training Output
 
 ```
 Epoch 50/100
@@ -127,11 +130,10 @@ Train Dice: 0.87 | Val Dice: 0.87
 
 
 
-## 📝 ISBI 2012 Dataset
+##  ISBI 2012 Dataset
 
 - **Images**: 30 slices (512×512 pixels)
 - **Type**: Electron microscopy of neuronal structures
 - **Split**: 24 training / 6 validation (configurable)
 - **Format**: Grayscale images + binary labels
-
 
