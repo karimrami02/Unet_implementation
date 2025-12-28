@@ -1,0 +1,100 @@
+
+# U-Net Training Configuration
+# Optimized for ISBI 2012 Cell Segmentation Dataset
+
+
+# Data paths
+data:
+  images_dir: "data/train-volume/images"  # ISBI 2012 images folder
+  labels_dir: "data/train-labels/labels"  # ISBI 2012 labels folder
+  
+  # Train/validation split (80/20 = 24 train, 6 validation for ISBI's 30 images)
+  train_val_split: 0.8  # 80% train, 20% validation
+  random_seed: 42
+  
+  # If you have a separate test set, set these paths
+  test_images: null
+  test_labels: null
+
+# Model configuration
+model:
+  name: "UNet"
+  n_channels: 1
+  n_classes: 2
+
+# Training configuration
+training:
+  epochs: 100  # More epochs for small dataset (30 images)
+  batch_size: 1  # Original U-Net paper uses batch_size=1
+  learning_rate: 0.01
+  momentum: 0.99
+  optimizer: "sgd"  # sgd or adam
+  scheduler: "step"  # step, plateau, cosine, or null
+  step_size: 20  # For StepLR - reduce LR every 20 epochs
+  gamma: 0.5  # Learning rate decay factor
+  
+  # Loss configuration
+  loss:
+    type: "combined"  # weighted_ce, dice, or combined
+    ce_weight: 1.0
+    dice_weight: 1.0
+  
+  # Weight map parameters (U-Net paper Section 3.1)
+  weight_map:
+    enabled: true
+    w0: 10
+    sigma: 5
+
+# Data augmentation (U-Net paper Section 3.1)
+augmentation:
+  elastic_transform:
+    enabled: true
+    alpha: 250
+    sigma: 10
+    p: 0.5
+  
+  horizontal_flip:
+    enabled: true
+    p: 0.5
+  
+  vertical_flip:
+    enabled: true
+    p: 0.5
+  
+  rotation:
+    enabled: true
+    p: 0.5
+  
+  normalize:
+    enabled: false
+    mean: 0.5
+    std: 0.5
+
+# Evaluation configuration
+evaluation:
+  batch_size: 1
+  save_predictions: true
+  prediction_dir: "experiments/predictions"
+
+# Checkpoint configuration
+checkpoint:
+  save_dir: "experiments/checkpoints"
+  save_freq: 5  # Save every N epochs
+  save_best: true  # Save best model based on validation metric
+  resume: null  # Path to checkpoint to resume from
+
+# Hardware configuration
+hardware:
+  device: "cuda"  # cuda or cpu
+  num_workers: 4
+  pin_memory: true
+
+# Logging configuration
+logging:
+  log_dir: "experiments/logs"
+  log_freq: 10  # Log every N batches
+  tensorboard: false
+  wandb: false
+
+# Random seed for reproducibility
+seed: 42

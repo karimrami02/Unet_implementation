@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Data
+data/
+datasets/
+*.zip
+*.tar.gz
+
+# Training outputs
+logs/
+experiments/
+checkpoints/
+runs/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+venv/
+conda/
+
+# Ajoutez ici les lignes qui étaient dans la version distante si elles sont pertinentes
